@@ -1,8 +1,8 @@
-import Customers from "@/src/components/dashboard/Customers";
-import NextAppointment from "@/src/components/dashboard/NextAppointment";
-import RecentDeals from "@/src/components/dashboard/RecentDeals";
-import Stats from "@/src/components/dashboard/Stats";
-import TasksToDo from "@/src/components/dashboard/TasksToDo";
+import Customers from "@/components/dashboard/Customers";
+import NextAppointment from "@/components/dashboard/NextAppointment";
+import RecentDeals from "@/components/dashboard/RecentDeals";
+import Stats from "@/components/dashboard/Stats";
+import TasksToDo from "@/components/dashboard/TasksToDo";
 
 export default function Dashboard() {
   return (

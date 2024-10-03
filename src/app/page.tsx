@@ -1,5 +1,5 @@
 "use client";
-import appRoutes from "@/src/config/appRoutes";
+import appRoutes from "@/config/appRoutes";
 import { redirect } from "next/navigation";
 
 export default function Home() {
