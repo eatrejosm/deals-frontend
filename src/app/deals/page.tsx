@@ -1,5 +1,5 @@
-import ChevronDownIcon from "@/components/icons/ChevronDownIcon";
-import FilterIcon from "@/components/icons/FilterIcon";
+import ChevronDownIcon from "@/src/components/icons/ChevronDownIcon";
+import FilterIcon from "@/src/components/icons/FilterIcon";
 import { Button } from "flowbite-react";
 
 const deals = [

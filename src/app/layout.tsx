@@ -1,9 +1,9 @@
 "use client";
 import "./globals.css";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
-import Header from "@/components/layouts/Header";
-import Sidebar from "@/components/layouts/Sidebar";
-import customTheme from "@/config/customTheme";
+import Header from "@/src/components/layouts/Header";
+import Sidebar from "@/src/components/layouts/Sidebar";
+import customTheme from "@/src/config/customTheme";
 
 export default function RootLayout({
   children,

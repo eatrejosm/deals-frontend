@@ -1,5 +1,5 @@
 "use client";
-import appRoutes from "@/config/appRoutes";
+import appRoutes from "@/src/config/appRoutes";
 import DashboardIcon from "../icons/DashboardIcon";
 import DealsIcon from "../icons/DealsIcon";
 import UsersIcon from "../icons/UsersIcon";
