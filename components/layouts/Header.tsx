@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       <div className="flex h-[90px] w-[90px] min-w-[90px] items-center justify-center border-r border-r-[#EAEEF4]">
         <AppLogoIcon />
       </div>
-      <div className="flex h-full w-full items-center justify-between px-3">
+      <div className="flex h-full w-full items-center justify-between px-6">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <div className="flex items-center gap-4">
           <Button pill color={"primary"} size={"lg"}>

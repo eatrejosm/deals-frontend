@@ -1,6 +1,6 @@
 "use client";
-import { Flowbite, ThemeModeScript } from "flowbite-react";
 import "./globals.css";
+import { Flowbite, ThemeModeScript } from "flowbite-react";
 import Header from "@/components/layouts/Header";
 import Sidebar from "@/components/layouts/Sidebar";
 import customTheme from "@/config/customTheme";
@@ -20,7 +20,7 @@ export default function RootLayout({
           <Header />
           <main className="flex">
             <Sidebar />
-            <div className="p-5">{children}</div>
+            <div className="flex-grow p-6">{children}</div>
           </main>
         </Flowbite>
       </body>

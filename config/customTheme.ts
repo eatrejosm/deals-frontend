@@ -73,7 +73,7 @@ const customTheme: CustomFlowbiteTheme = {
         "bg-gradient-to-r from-teal-200 to-lime-200 text-gray-900 focus:ring-4 focus:ring-lime-200 enabled:hover:bg-gradient-to-l enabled:hover:from-teal-200 enabled:hover:to-lime-200 enabled:hover:text-gray-900 dark:focus:ring-teal-700",
     },
     inner: {
-      base: "flex items-stretch transition-all duration-200",
+      base: "flex items-center transition-all duration-200 ",
       position: {
         none: "",
         start: "rounded-r-none",
