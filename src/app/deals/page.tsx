@@ -3,78 +3,102 @@ import ChevronDownIcon from "@/components/icons/ChevronDownIcon";
 import EditIcon from "@/components/icons/EditIcon";
 import FilterIcon from "@/components/icons/FilterIcon";
 import ImageIcon from "@/components/icons/ImageIcon";
+import { uesDealModal } from "@/contexts/DealModalContext";
+import axiosInstance from "@/utils/axios";
 import { Deal } from "@/utils/types";
-import { Button } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
+import { useEffect, useState } from "react";
 
-const deals: Deal[] = [
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-  {
-    address: {
-      street: "475 Spruce Drive",
-      city: "Pittsburgh",
-      state: "PA",
-      zipCode: "23592",
-    },
-    area: 100,
-    status: "In Progress",
-    people: 0,
-  },
-];
+// const deals: Deal[] = [
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+//   {
+//     address: {
+//       street: "475 Spruce Drive",
+//       city: "Pittsburgh",
+//       state: "PA",
+//       zipCode: "23592",
+//     },
+//     area: 100,
+//     status: "In Progress",
+//     people: 0,
+//   },
+// ];
 export default function DealsPage() {
+  const [loading, setLoading] = useState(false);
+  const { onClose } = uesDealModal();
+  const [deals, setDeals] = useState<Deal[]>([]);
+  async function loadData() {
+    setLoading(true);
+    try {
+      const { data } = await axiosInstance.get("/deals");
+    } catch (err) {}
+    setLoading(false);
+  }
+  useEffect(() => {
+    onClose((updated) => {
+      console.log("closed modal", updated);
+      if (updated) {
+        loadData();
+      }
+    });
+  }, [onClose]);
+  useEffect(() => {
+    loadData();
+  }, []);
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -99,14 +123,14 @@ export default function DealsPage() {
               <th className="px-4 py-2">
                 <ImageIcon />
               </th>
-              <th className="text-secondary text-normal px-4 py-2">Name</th>
-              <th className="text-secondary text-normal px-4 py-2">Area</th>
-              <th className="text-secondary text-normal px-4 py-2">
+              <th className="text-normal px-4 py-2 text-secondary">Name</th>
+              <th className="text-normal px-4 py-2 text-secondary">Area</th>
+              <th className="text-normal px-4 py-2 text-secondary">
                 Appointment Date
               </th>
-              <th className="text-secondary text-normal px-4 py-2">Price</th>
-              <th className="text-secondary text-normal px-4 py-2">Status</th>
-              <th className="text-secondary text-normal px-4 py-2">Edit</th>
+              <th className="text-normal px-4 py-2 text-secondary">Price</th>
+              <th className="text-normal px-4 py-2 text-secondary">Status</th>
+              <th className="text-normal px-4 py-2 text-secondary">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -128,7 +152,7 @@ export default function DealsPage() {
                 <td className="px-4 py-2">$6000</td>
                 <td className="px-4 py-2">
                   <span
-                    className={`text-primary flex h-[40px] w-[120px] items-center justify-center rounded-full bg-[#ECECFE] text-xs`}
+                    className={`flex h-[40px] w-[120px] items-center justify-center rounded-full bg-[#ECECFE] text-xs text-primary`}
                   >
                     {deal.status}
                   </span>
@@ -143,11 +167,17 @@ export default function DealsPage() {
           </tbody>
         </table>
       </div>
-      <div className="mt-6 flex justify-center">
-        <Button pill color={"light"} size={"lg"}>
-          Load More
-        </Button>
+
+      <div className="flex items-center justify-center p-5">
+        {loading ? (
+          <Spinner size={"lg"} color={"success"} />
+        ) : (
+          <Button pill color={"light"} size={"lg"}>
+            Load More
+          </Button>
+        )}
       </div>
+      <div className="mt-6 flex justify-center"></div>
     </div>
   );
 }

@@ -49,7 +49,7 @@ const DealModal: React.FC<Props> = ({ show, onClose }) => {
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
-      await axiosInstance.post("deals", data);
+      await axiosInstance.post("/deals", data);
       onClose(true);
     } catch (err) {}
     setSubmitting(false);

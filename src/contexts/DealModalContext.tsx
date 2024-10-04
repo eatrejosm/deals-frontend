@@ -4,16 +4,15 @@ import { Deal } from "@/utils/types";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 type DealModalContextType = {
-  showModal: (d?: {
-    deal?: Deal;
-    onClose?: (updated?: boolean) => void;
-  }) => void;
+  showModal: (deal?: Deal) => void;
   closeModal: (updated?: boolean) => void;
+  onClose: (callback: (updated?: boolean) => void) => void;
 };
 
 const defaultValue: DealModalContextType = {
   showModal: () => null,
   closeModal: () => null,
+  onClose: () => null,
 };
 export const DealModalContext = createContext(defaultValue);
 
@@ -26,12 +25,14 @@ export const DealModalProvider = (props: PropsWithChildren) => {
   return (
     <DealModalContext.Provider
       value={{
-        showModal: ({ deal, onClose } = {}) => {
+        showModal: (deal) => {
           setData(deal);
-          setOnCloseFunc(onClose);
           setShow(true);
         },
         closeModal: () => setShow(false),
+        onClose: (callback) => {
+          setOnCloseFunc(callback);
+        },
       }}
     >
       {props.children}

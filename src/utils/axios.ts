@@ -1,7 +1,7 @@
 import appConfig from "@/config/appConfig";
 import axios from "axios";
 
-const API_PREFIX = "/api/";
+const API_PREFIX = "/api";
 
 const axiosInstance = axios.create({
   baseURL: appConfig.apiEndpoint + API_PREFIX, // Set the base URL
