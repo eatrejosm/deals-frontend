@@ -2,8 +2,11 @@ import { Button } from "flowbite-react";
 import AppLogoIcon from "../icons/AppLogoIcon";
 import SearchIcon from "../icons/SearchIcon";
 import Image from "next/image";
+import PlusIcon from "../icons/PlusIcon";
+import { uesDealModal } from "@/contexts/DealModalContext";
 
 const Header: React.FC = () => {
+  const { showModal: onShowModal } = uesDealModal();
   return (
     <header className="flex h-[90px] border-b border-b-[#EAEEF4]">
       <div className="flex h-[90px] w-[90px] min-w-[90px] items-center justify-center border-r border-r-[#EAEEF4]">
@@ -12,8 +15,13 @@ const Header: React.FC = () => {
       <div className="flex h-full w-full items-center justify-between px-6">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <div className="flex items-center gap-4">
-          <Button pill color={"primary"} size={"lg"}>
-            Add New +
+          <Button
+            pill
+            color={"primary"}
+            size={"lg"}
+            onClick={() => onShowModal()}
+          >
+            Add New Deal <PlusIcon className="ml-3" />
           </Button>
           <button className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-white">
             <SearchIcon />

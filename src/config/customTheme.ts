@@ -13,7 +13,7 @@ const customTheme: CustomFlowbiteTheme = {
       gray: ":ring-cyan-700 border border-gray-200 bg-white text-gray-900 focus:text-cyan-700 focus:ring-4 enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 dark:border-gray-600 dark:bg-transparent dark:text-gray-400 dark:enabled:hover:bg-gray-700 dark:enabled:hover:text-white",
       info: "border border-transparent bg-cyan-700 text-white focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-cyan-800 dark:bg-cyan-600 dark:focus:ring-cyan-800 dark:enabled:hover:bg-cyan-700",
       light:
-        "border border-gray-300 bg-white text-gray-900 focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-600 dark:text-white dark:focus:ring-gray-700 dark:enabled:hover:border-gray-700 dark:enabled:hover:bg-gray-700",
+        "border border-gray-300 bg-white text-[#092C4C] focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-600 dark:text-white dark:focus:ring-gray-700 dark:enabled:hover:border-gray-700 dark:enabled:hover:bg-gray-700",
       purple:
         "border border-transparent bg-purple-700 text-white focus:ring-4 focus:ring-purple-300 enabled:hover:bg-purple-800 dark:bg-purple-600 dark:focus:ring-purple-900 dark:enabled:hover:bg-purple-700",
       success:
@@ -112,8 +112,125 @@ const customTheme: CustomFlowbiteTheme = {
       xs: "px-2 py-1 text-xs",
       sm: "px-3 py-1.5 text-sm",
       md: "px-4 py-2 text-sm",
-      lg: "px-5 py-2.5 text-base",
+      lg: "px-5 py-2.5 text-sm",
       xl: "px-6 py-3 text-base",
+    },
+  },
+  modal: {
+    root: {
+      base: "fixed inset-x-0 top-0 z-50 h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full",
+      show: {
+        on: "flex modal-overlay-bg",
+        off: "hidden",
+      },
+      sizes: {
+        sm: "max-w-sm",
+        md: "max-w-md",
+        lg: "max-w-lg",
+        xl: "max-w-xl",
+        "2xl": "max-w-2xl",
+        "3xl": "max-w-3xl",
+        "4xl": "max-w-4xl",
+        "5xl": "max-w-5xl",
+        "6xl": "max-w-6xl",
+        "7xl": "max-w-7xl",
+      },
+      positions: {
+        "top-left": "items-start justify-start",
+        "top-center": "items-start justify-center",
+        "top-right": "items-start justify-end",
+        "center-left": "items-center justify-start",
+        center: "items-center justify-center",
+        "center-right": "items-center justify-end",
+        "bottom-right": "items-end justify-end",
+        "bottom-center": "items-end justify-center",
+        "bottom-left": "items-end justify-start",
+      },
+    },
+    content: {
+      base: "relative h-full w-full p-4 md:h-auto",
+      inner:
+        "relative flex max-h-[90dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700",
+    },
+    body: {
+      base: "flex-1 overflow-auto p-6",
+      popup: "pt-0",
+    },
+    header: {
+      base: "flex items-start justify-between rounded-t p-5 dark:border-gray-600",
+      popup: "border-b-0 p-2",
+      title: "text-lg font-bold",
+      close: {
+        base: "ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white",
+        icon: "h-5 w-5",
+      },
+    },
+    footer: {
+      base: "flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600",
+      popup: "border-t",
+    },
+  },
+  textInput: {
+    base: "flex",
+    addon:
+      "inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400",
+    field: {
+      base: "relative w-full",
+      icon: {
+        base: "pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3",
+        svg: "h-5 w-5 text-gray-500 dark:text-gray-400",
+      },
+      rightIcon: {
+        base: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3",
+        svg: "h-5 w-5 text-gray-500 dark:text-gray-400",
+      },
+      input: {
+        base: "block w-full border bg-text-input disabled:cursor-not-allowed disabled:opacity-50",
+        sizes: {
+          sm: "p-2 sm:text-xs",
+          md: "p-2.5 text-sm",
+          lg: "p-3 h-[50px] sm:text-base",
+        },
+        colors: {
+          gray: "border-secondary border-red text-gray-900 focus:border-gray-200 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500",
+          info: "border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500",
+          failure:
+            "border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500",
+          warning:
+            "border-yellow-500 bg-yellow-50 text-yellow-900 placeholder-yellow-700 focus:border-yellow-500 focus:ring-yellow-500 dark:border-yellow-400 dark:bg-yellow-100 dark:focus:border-yellow-500 dark:focus:ring-yellow-500",
+          success:
+            "border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500",
+        },
+        withRightIcon: {
+          on: "pr-10",
+          off: "",
+        },
+        withIcon: {
+          on: "pl-10",
+          off: "",
+        },
+        withAddon: {
+          on: "rounded-r-lg",
+          off: "rounded-lg",
+        },
+        withShadow: {
+          on: "shadow-sm dark:shadow-sm-light",
+          off: "",
+        },
+      },
+    },
+  },
+  label: {
+    root: {
+      base: "font-bold",
+      disabled: "opacity-50",
+      colors: {
+        default: "dark:text-white",
+        info: "text-cyan-500 dark:text-cyan-600",
+        failure: "text-red-700 dark:text-red-500",
+        warning: "text-yellow-500 dark:text-yellow-600",
+        success: "text-green-700 dark:text-green-500",
+      },
     },
   },
 };

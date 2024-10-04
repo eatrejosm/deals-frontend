@@ -1,85 +1,141 @@
+"use client";
 import ChevronDownIcon from "@/components/icons/ChevronDownIcon";
+import EditIcon from "@/components/icons/EditIcon";
 import FilterIcon from "@/components/icons/FilterIcon";
+import ImageIcon from "@/components/icons/ImageIcon";
+import { Deal } from "@/utils/types";
 import { Button } from "flowbite-react";
 
-const deals = [
+const deals: Deal[] = [
   {
-    name: "475 Spruce Drive, Pittsburgh, PA 23592",
-    area: "100M²",
-    date: "Nov 14, 2021 07:00 AM",
-    price: "$6000",
-    status: "IN PROGRESS",
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
   },
-  // Add more deals...
+  {
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
+  },
+  {
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
+  },
+  {
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
+  },
+  {
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
+  },
+  {
+    address: {
+      street: "475 Spruce Drive",
+      city: "Pittsburgh",
+      state: "PA",
+      zipCode: "23592",
+    },
+    area: 100,
+    status: "In Progress",
+    people: 0,
+  },
 ];
 export default function DealsPage() {
   return (
     <div>
       <div className="flex items-center justify-between">
         <h2 className="mb-4 text-lg font-semibold">Total: 136 deals</h2>
-
-        {/* Sorting and Filter Options */}
-        <div className="mb-4 flex items-center ">
+        <div className="mb-4 flex items-center gap-4">
           <Button color={"light"} pill size={"lg"}>
             Sort by: Date Created
-            <ChevronDownIcon />
+            <ChevronDownIcon className="ml-3" />
           </Button>
 
           <Button pill size={"lg"} color={"light"}>
             Filter
-            <FilterIcon />
+            <FilterIcon className="ml-3" />
           </Button>
         </div>
       </div>
 
       <div className="">
-        <table className="min-w-full rounded-lg bg-white">
+        <table className="min-w-full rounded-lg">
           <thead>
-            <tr className="bg-gray-50 text-left">
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Area</th>
-              <th className="px-4 py-2">Appointment Date</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Status</th>
-              <th className="px-4 py-2">Edit</th>
+            <tr className="border-b text-left">
+              <th className="px-4 py-2">
+                <ImageIcon />
+              </th>
+              <th className="text-secondary text-normal px-4 py-2">Name</th>
+              <th className="text-secondary text-normal px-4 py-2">Area</th>
+              <th className="text-secondary text-normal px-4 py-2">
+                Appointment Date
+              </th>
+              <th className="text-secondary text-normal px-4 py-2">Price</th>
+              <th className="text-secondary text-normal px-4 py-2">Status</th>
+              <th className="text-secondary text-normal px-4 py-2">Edit</th>
             </tr>
           </thead>
           <tbody>
             {deals.map((deal, index) => (
-              <tr key={index} className="border-t">
-                <td className="flex items-center px-4 py-2">
+              <tr key={index} className="border-b">
+                <td className="w-[60px] py-4" align="center">
                   <img
                     src="/assets/images/room-img.png"
                     alt=""
-                    className="mr-3 h-10 w-10 rounded-full"
+                    className="h-10 w-10 rounded-full"
                   />
-                  {deal.name}
                 </td>
-                <td className="px-4 py-2">{deal.area}</td>
-                <td className="px-4 py-2">{deal.date}</td>
-                <td className="px-4 py-2">{deal.price}</td>
+                <td className="px-4 py-2">
+                  {deal.address.street}, {deal.address.city},{" "}
+                  {deal.address.state} {deal.address.zipCode}
+                </td>
+                <td className="px-4 py-2">{deal.area}M²</td>
+                <td className="px-4 py-2">Nov 14, 2021 07:00 AM</td>
+                <td className="px-4 py-2">$6000</td>
                 <td className="px-4 py-2">
                   <span
-                    className={`rounded-full px-3 py-1 text-sm text-white ${
-                      deal.status === "IN PROGRESS"
-                        ? "bg-indigo-500"
-                        : "bg-gray-300"
-                    }`}
+                    className={`text-primary flex h-[40px] w-[120px] items-center justify-center rounded-full bg-[#ECECFE] text-xs`}
                   >
                     {deal.status}
                   </span>
                 </td>
                 <td className="px-4 py-2">
                   <button className="text-indigo-600 hover:underline">
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M3 4h18" />
-                    </svg>
+                    <EditIcon />
                   </button>
                 </td>
               </tr>
@@ -88,9 +144,9 @@ export default function DealsPage() {
         </table>
       </div>
       <div className="mt-6 flex justify-center">
-        <button className="rounded-lg border border-gray-300 bg-white px-4 py-2">
+        <Button pill color={"light"} size={"lg"}>
           Load More
-        </button>
+        </Button>
       </div>
     </div>
   );

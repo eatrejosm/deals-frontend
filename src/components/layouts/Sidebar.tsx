@@ -8,7 +8,6 @@ import CalendarIcon from "../icons/CalendarIcon";
 import NotificationIcon from "../icons/NotificationIcon";
 import SettingsIcon from "../icons/SettingsIcon";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
@@ -55,7 +54,7 @@ const Sidebar: React.FC = () => {
           href={item.path}
           key={id}
           className={clsx(
-            "flex h-[50px] w-[50px] items-center justify-center rounded-full",
+            "flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#EAEEF4]",
             currentPath === item.path ? "bg-blue" : "bg-white",
           )}
         >

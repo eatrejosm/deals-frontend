@@ -6,7 +6,7 @@ import TasksToDo from "@/components/dashboard/TasksToDo";
 
 export default function Dashboard() {
   return (
-    <div className="grid grid-cols-1 gap-6 p-6 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
       {/* Left Sidebar */}
       <div className="col-span-1 space-y-6">
         <NextAppointment />

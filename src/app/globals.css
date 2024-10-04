@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "flowbite";
+
 body {
-  background-color: #f6fafde5;
+  background: #f6fafde5;
   color: #092c4c;
+}
+
+.modal-overlay-bg {
+  background-color: #00000055;
+}
+
+.bg-text-input {
+  background-color: #f6fafd !important;
 }
